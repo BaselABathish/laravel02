@@ -18,13 +18,16 @@
                     <div class="accordion-body">
                         <!-- Replace with your actual company table -->
                         <table class="table table-bordered">
-
                             <thead><tr><th>ID</th><th>Name</th></tr></thead>
-                            <tbody><tr><td>1</td><td>Example Co</td></tr></tbody>
+                            @foreach($companies as $company)
+                                <tbody><tr><td>{{$company->id}}</td><td>{{$company->name}}</td></tr></tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div>
+
+
 
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingEmployee">
@@ -36,12 +39,17 @@
                     <div class="accordion-body">
                         <!-- Replace with your actual employee table -->
                         <table class="table table-bordered">
-                            <thead><tr><th>ID</th><th>Name</th></tr></thead>
-                            <tbody><tr><td>1</td><td>John Doe</td></tr></tbody>
+                            <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Company</th></tr></thead>
+                            @foreach($employees as $employee)
+                                <tbody><tr><td>{{$employee->id}}</td><td>{{$employee->name}}</td><td>{{$employee->email}}</td><td>{{$employee->company->name}}</td></tr></tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div>
+
+
+
 
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingAssistant">
@@ -53,12 +61,16 @@
                     <div class="accordion-body">
                         <!-- Replace with your actual assistant table -->
                         <table class="table table-bordered">
-                            <thead><tr><th>ID</th><th>Name</th></tr></thead>
-                            <tbody><tr><td>1</td><td>Jane Smith</td></tr></tbody>
+                            <thead><tr><th>ID</th><th>Name</th><th>Company</th></tr></thead>
+                            @foreach($assistants as $assistant)
+                                <tbody><tr><td>{{$assistant->id}}</td><td>{{$assistant->name}}</td><td>{{$assistant->company->name}}</td></tr></tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div>
+
+
 
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingVector">
@@ -70,12 +82,16 @@
                     <div class="accordion-body">
                         <!-- Replace with your actual vector table -->
                         <table class="table table-bordered">
-                            <thead><tr><th>ID</th><th>Data</th></tr></thead>
-                            <tbody><tr><td>1</td><td>[1, 2, 3]</td></tr></tbody>
+                            <thead><tr><th>ID</th><th>Name</th><th>Description</th><th>Company</th></tr></thead>
+                            @foreach($vector_stores as $vs)
+                                <tbody><tr><td>{{$vs->id}}</td><td>{{$vs->name}}</td><td>{{$vs->description}}</td><td>{{$vs->company->name}}</td></tr></tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div>
+
+
 
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFile">
@@ -87,8 +103,10 @@
                     <div class="accordion-body">
                         <!-- Replace with your actual file table -->
                         <table class="table table-bordered">
-                            <thead><tr><th>ID</th><th>Filename</th></tr></thead>
-                            <tbody><tr><td>1</td><td>example.pdf</td></tr></tbody>
+                            <thead><tr><th>ID</th><th>Filename</th><th>Uploaded by</th><th>Vector store</th></tr></thead>
+                            @foreach($files as $f)
+                                <tbody><tr><td>{{$f->id}}</td><td>{{$f->filename}}</td><td>{{$f->uploader_id}}</td><td>{{$f->vector_store->name}}</td></tr></tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
